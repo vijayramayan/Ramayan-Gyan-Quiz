@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>रामायण प्रश्नोत्तरी</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fffbe7;
+      color: #3e2723;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #bf360c;
+    }
+    .section {
+      margin: 20px auto;
+      padding: 15px;
+      border: 2px solid #ffe082;
+      width: 95%;
+      background-color: #fff3e0;
+      border-radius: 10px;
+    }
+    button {
+      margin: 6px;
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #ffa726;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e65100;
+    }
+    #scoreDisplay {
+      font-size: 20px;
+      color: green;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 रामायण प्रश्नोत्तरी 🧠</h1>
+  <p>नीचे दिए गए प्रश्नों के उत्तर देकर अपना ज्ञान परखें</p>
+
+  <div id="quizContainer"></div>
+  <div id="scoreDisplay">आपका स्कोर: 0</div>
+
+  <script>
+    const questions = [
+      { q: "राम का वनवास कितने वर्षों का था?", options: ["10", "14", "7"], correct: 1 },
+      { q: "रामायण किस ऋषि ने रचाई?", options: ["व्यास", "विश्वामित्र", "वाल्मीकि"], correct: 2 },
+      { q: "हनुमान जी ने किस पर्वत से संजीवनी बूटी लाई?", options: ["गंधमादन", "त्रिकूट", "द्रोणगिरि"], correct: 2 },
+      { q: "राम जी ने किससे धनुष तोड़ा?", options: ["शिव जी", "परशुराम", "जनक का धनुष"], correct: 2 },
+      { q: "राम जी के पिता कौन थे?", options: ["दशरथ", "वशिष्ठ", "जनक"], correct: 0 },
+      { q: "सीता जी का जन्म कहाँ हुआ?", options: ["अयोध्या", "जनकपुर", "मिथिला"], correct: 2 },
+      { q: "रामायण में कितने कांड हैं?", options: ["5", "7", "6"], correct: 1 },
+      { q: "राम जी के भाइयों का सही समूह क्या है?", options: ["लक्ष्मण, भरत, शत्रुघ्न", "रावण, विभीषण, कुंभकर्ण", "युधिष्ठिर, भीम, अर्जुन"], correct: 0 },
+      { q: "रामायण में समुद्र पर पुल किसने बनाया?", options: ["राम", "हनुमान", "नल और नील"], correct: 2 },
+      { q: "विभीषण ने रावण को क्या सलाह दी थी?", options: ["सीता को लौटा दो", "युद्ध करो", "राम को हराओ"], correct: 0 }
+    ];
+
+    let score = 0;
+
+    function loadQuiz() {
+      const container = document.getElementById("quizContainer");
+      container.innerHTML = "";
+
+      questions.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "section";
+
+        const qText = document.createElement("h3");
+        qText.innerText = `प्रश्न ${index + 1}: ${item.q}`;
+        div.appendChild(qText);
+
+        item.options.forEach((opt, i) => {
+          const btn = document.createElement("button");
+          btn.innerText = opt;
+          btn.onclick = () => checkAnswer(index, i);
+          div.appendChild(btn);
+        });
+
+        container.appendChild(div);
+      });
+    }
+
+    function checkAnswer(qIndex, selectedIndex) {
+      const correctIndex = questions[qIndex].correct;
+      if (selectedIndex === correctIndex) {
+        alert("✅ सही उत्तर!");
+        score++;
+      } else {
+        alert(`❌ गलत उत्तर!\nसही उत्तर है: ${questions[qIndex].options[correctIndex]}`);
+      }
+      document.getElementById("scoreDisplay").innerText = "आपका स्कोर: " + score;
+    }
+
+    loadQuiz();
+  </script>
+
+</body>
+</html>

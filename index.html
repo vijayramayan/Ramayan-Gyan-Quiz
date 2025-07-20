@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>पंजीकरण - रामायण ज्ञान परीक्षा</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fffde7;
+      color: #3e2723;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #e65100;
+    }
+    .form-section {
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #ffcc80;
+      background-color: #fff8e1;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+    }
+    input, button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e65100;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚩 रामायण ज्ञान परीक्षा में आपका स्वागत है</h1>
+  <p>कृपया नीचे अपना विवरण भरें और रजिस्टर करें</p>
+
+  <div class="form-section">
+    <form action="https://formsubmit.co/Vijay8827475935@gmail.com" method="POST" onsubmit="return verifyOTP()">
+      <input type="text" name="name" id="name" placeholder="पूरा नाम" required><br>
+      <input type="number" name="age" id="age" placeholder="उम्र" required><br>
+      <input type="tel" name="mobile" id="mobile" placeholder="मोबाइल नंबर" required><br>
+      <button type="button" onclick="sendOTP()">OTP भेजें</button><br>
+      <input type="text" name="otp" id="otp" placeholder="OTP दर्ज करें" required><br>
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="quiz.html">
+
+      <button type="submit">रजिस्टर करें</button>
+    </form>
+  </div>
+
+  <script>
+    function sendOTP() {
+      const mobile = document.getElementById("mobile").value;
+      if (mobile.length === 10) {
+        alert(`📲 OTP भेजा गया ${mobile} पर (डेमो)`);
+      } else {
+        alert("❌ कृपया 10 अंकों का सही मोबाइल नंबर दर्ज करें");
+      }
+    }
+
+    function verifyOTP() {
+      const otp = document.getElementById("otp").value;
+      if (otp === "") {
+        alert("❌ कृपया OTP दर्ज करें");
+        return false;
+      }
+      alert("✅ आपका पंजीकरण सफल रहा!\nअब आप परीक्षा में भाग ले सकते हैं");
+      return true;
+    }
+  </script>
+</body>
+</html>
